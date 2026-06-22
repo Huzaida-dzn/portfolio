@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Banners — Huzaifa DZN</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[data-theme="light"]{--ink:#0d0d0d;--ink2:#444;--ink3:#999;--bg:#f5f4f0;--accent:#00c98d;--accent-glow:rgba(0,201,141,0.25);--border:rgba(0,0,0,0.08);--border2:rgba(0,0,0,0.14);--card-bg:rgba(255,255,255,0.9);--nav-bg:rgba(245,244,240,0.9);--orb1:rgba(0,201,141,0.1);--orb2:rgba(0,100,255,0.06);--orb3:rgba(255,100,0,0.04);}
+[data-theme="dark"]{--ink:#f0efe8;--ink2:#a8a79f;--ink3:#555;--bg:#0c0c0a;--accent:#00c98d;--accent-glow:rgba(0,201,141,0.2);--border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);--card-bg:rgba(24,24,20,0.9);--nav-bg:rgba(12,12,10,0.9);--orb1:rgba(0,201,141,0.07);--orb2:rgba(0,100,255,0.05);--orb3:rgba(255,100,0,0.04);}
+html{scroll-behavior:smooth}body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;transition:background .35s,color .35s}
+.bg-orbs{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}.orb{position:absolute;border-radius:50%;filter:blur(80px);animation:orbFloat 14s ease-in-out infinite alternate}.orb1{width:500px;height:500px;top:-100px;right:-100px;background:var(--orb1)}.orb2{width:400px;height:400px;bottom:20%;left:-120px;background:var(--orb2);animation-duration:10s;animation-delay:-3s}.orb3{width:300px;height:300px;top:50%;left:45%;background:var(--orb3);animation-duration:16s;animation-delay:-7s}
+@keyframes orbFloat{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,40px) scale(1.08)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:var(--nav-bg);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:background .35s,border-color .35s}
+.nav-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;letter-spacing:-0.03em;color:var(--ink);text-decoration:none}.nav-logo span{color:var(--accent)}.nav-right{display:flex;align-items:center;gap:.75rem}
+.back-btn{font-size:.82rem;font-weight:600;color:var(--ink2);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;padding:.45rem 1rem;border-radius:100px;border:1px solid var(--border2);background:var(--card-bg);transition:all .2s}.back-btn:hover{border-color:var(--accent);color:var(--accent)}
+.theme-toggle{width:36px;height:36px;border-radius:50%;border:1px solid var(--border2);background:var(--card-bg);cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;transition:all .2s}.theme-toggle:hover{border-color:var(--accent);transform:rotate(20deg)}
+#page{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}#page.visible{opacity:1;transform:translateY(0)}
+.sub-hero{position:relative;z-index:1;padding:7.5rem 2.5rem 3rem;max-width:1100px;margin:0 auto}.sub-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.18em;color:var(--accent);text-transform:uppercase;display:inline-flex;align-items:center;gap:.7rem;margin-bottom:1.2rem}.sub-eyebrow::before{content:'';width:22px;height:2px;background:var(--accent);display:block}
+.sub-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:clamp(2.4rem,6vw,5rem);letter-spacing:-0.04em;line-height:1;color:var(--ink)}.sub-hero h1 span{color:var(--accent)}.sub-hero p{font-size:1rem;color:var(--ink2);margin-top:1rem;max-width:460px;line-height:1.75}
+.filter-wrap{position:relative;z-index:1;padding:0 2.5rem;max-width:1100px;margin:0 auto 2rem}.filter-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.filter-btn{font-size:.78rem;font-weight:600;padding:.42rem 1.1rem;border-radius:100px;border:1px solid var(--border2);background:transparent;color:var(--ink2);cursor:pointer;white-space:nowrap;transition:all .2s;font-family:'Plus Jakarta Sans',sans-serif}.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#0a0a0a;border-color:var(--accent)}
+.work-section{position:relative;z-index:1;padding:0 2.5rem 6rem;max-width:1100px;margin:0 auto}
+/* Banners are wide — special grid */
+.work-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+.work-card{border-radius:20px;overflow:hidden;border:1px solid var(--border);background:var(--card-bg);backdrop-filter:blur(10px);transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .35s}.work-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.14);border-color:var(--accent)}.work-card[data-hidden="true"]{display:none}
+.card-thumb{height:160px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.card-thumb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);z-index:1}
+.card-type-tag{position:absolute;top:12px;left:12px;z-index:2;font-size:.63rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.15);color:#fff;padding:3px 10px;border-radius:100px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2)}
+.platform-badge{position:absolute;top:12px;right:12px;z-index:2;font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(0,201,141,.9);color:#0a0a0a;padding:3px 10px;border-radius:100px}
+.card-info{padding:1rem 1.3rem}.card-info h3{font-size:.95rem;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin-bottom:.2rem}.card-info p{font-size:.78rem;color:var(--ink3)}
+.upload-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.4rem;z-index:3;opacity:0;transition:opacity .2s;background:rgba(0,0,0,.3)}.work-card:hover .upload-hint{opacity:1}.upload-hint span{font-size:.63rem;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.06em;text-transform:uppercase}
+.art{position:absolute;left:0;right:0;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:900}.art-t{top:20px}.art-b{bottom:16px}
+footer{text-align:center;padding:2rem;font-size:.76rem;color:var(--ink3);border-top:1px solid var(--border);position:relative;z-index:1}footer strong{color:var(--ink);font-weight:600}
+@media(max-width:768px){nav{padding:1rem 1.2rem}.sub-hero,.filter-wrap,.work-section{padding-left:1.25rem;padding-right:1.25rem}}
+</style>
+</head>
+<body>
+<div class="bg-orbs"><div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div></div>
+<nav>
+  <a href="huzaifa-dzn-portfolio.html" class="nav-logo">Huzaifa <span>DZN</span></a>
+  <div class="nav-right">
+    <a href="huzaifa-dzn-portfolio.html" class="back-btn">← Back to Portfolio</a>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
+  </div>
+</nav>
+<div id="page">
+<div class="sub-hero">
+  <div class="sub-eyebrow">Portfolio — Niche 03</div>
+  <h1>Banners &<br><span>Headers</span></h1>
+  <p>YouTube channel art, Facebook covers, Twitter headers and brand banners — wide format designs built for every platform.</p>
+</div>
+<div class="filter-wrap">
+  <div class="filter-row">
+    <button class="filter-btn active" data-tag="All">All</button>
+    <button class="filter-btn" data-tag="YouTube">YouTube</button>
+    <button class="filter-btn" data-tag="Facebook">Facebook</button>
+    <button class="filter-btn" data-tag="Twitter">Twitter/X</button>
+    <button class="filter-btn" data-tag="Gaming">Gaming</button>
+    <button class="filter-btn" data-tag="Sale">Sale/Promo</button>
+    <button class="filter-btn" data-tag="Brand">Brand</button>
+  </div>
+</div>
+<div class="work-section">
+  <div class="work-grid">
+
+    <div class="work-card" data-tag="YouTube">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#0a0a20,#1a1050,#2a1880)">
+        <div class="art art-t" style="font-size:1.3rem;color:#fff;letter-spacing:.04em">HUZAIFA DZN</div>
+        <div style="position:absolute;top:62px;left:50%;transform:translateX(-50%);width:44px;height:2px;background:#00c98d"></div>
+        <div class="art art-b" style="font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.1em">GRAPHIC DESIGNER · SUBSCRIBE NOW</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Channel Art</div>
+        <div class="platform-badge">YouTube</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>YouTube Channel Art</h3><p>2560×1440 · Personal branding</p></div>
+    </div>
+
+    <div class="work-card" data-tag="YouTube">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#001a00,#003300,#004400)">
+        <div class="art art-t" style="font-size:1.1rem;color:#00ff88;letter-spacing:.08em;text-shadow:0 0 14px rgba(0,255,136,.6)">GAMING WITH HUZAIFA</div>
+        <div style="position:absolute;top:60px;left:50%;transform:translateX(-50%);width:1px;height:30px;background:rgba(0,255,136,.3)"></div>
+        <div class="art art-b" style="font-size:.62rem;color:rgba(255,255,255,.4);letter-spacing:.12em">SUBSCRIBE FOR DAILY CONTENT</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Channel Art</div>
+        <div class="platform-badge">YouTube</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Gaming YouTube Banner</h3><p>2560×1440 · Gaming niche</p></div>
+    </div>
+
+    <div class="work-card" data-tag="Facebook">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#001430,#002860,#003a90)">
+        <div class="art art-t" style="font-size:1rem;color:#fff;letter-spacing:.02em">Welcome to Huzaifa DZN</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:rgba(0,201,141,.25);border:2px solid rgba(0,201,141,.5);display:flex;align-items:center;justify-content:center;font-size:1.3rem">✨</div>
+        <div class="art art-b" style="font-size:.6rem;color:rgba(255,255,255,.4);letter-spacing:.12em">FOLLOW · LIKE · SHARE</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Cover Photo</div>
+        <div class="platform-badge">Facebook</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Facebook Page Cover</h3><p>820×312 · Business page</p></div>
+    </div>
+
+    <div class="work-card" data-tag="Twitter">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#000a18,#001a30,#002848)">
+        <div class="art art-t" style="font-size:1.05rem;color:#fff;font-weight:900;letter-spacing:-.01em">Design · Create · Inspire</div>
+        <div style="position:absolute;top:56px;left:50%;transform:translateX(-50%);width:36px;height:2px;background:#00c98d"></div>
+        <div class="art art-b" style="font-size:.68rem;color:#00c98d">@huzaifa_dzn</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Header</div>
+        <div class="platform-badge">Twitter/X</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Twitter / X Header</h3><p>1500×500 · Personal brand</p></div>
+    </div>
+
+    <div class="work-card" data-tag="Gaming">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#000a00,#002200,#003300)">
+        <div class="art art-t" style="font-size:1.05rem;color:#00ff88;letter-spacing:.08em;text-shadow:0 0 14px rgba(0,255,136,.7)">JOIN THE SQUAD</div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ff88,transparent)"></div>
+        <div class="art art-b" style="font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.12em">GAMING CHANNEL · SUBSCRIBE FOR MORE</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Gaming Banner</div>
+        <div class="platform-badge">Gaming</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Gaming Channel Banner</h3><p>YouTube / Twitch style header</p></div>
+    </div>
+
+    <div class="work-card" data-tag="Sale">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#1a0000,#550000,#880000)">
+        <div class="art art-t" style="font-size:1.3rem;color:#ffdd00;font-weight:900;text-shadow:0 2px 14px rgba(255,200,0,.6)">MEGA SALE</div>
+        <div style="position:absolute;top:64px;left:50%;transform:translateX(-50%);font-size:.7rem;font-weight:700;background:#ffdd00;color:#0a0a0a;padding:3px 14px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap">UP TO 70% OFF</div>
+        <div class="art art-b" style="font-size:.6rem;color:rgba(255,255,255,.5);letter-spacing:.12em">TODAY ONLY · SHOP NOW</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Promo</div>
+        <div class="platform-badge">Sale</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Sale Banner</h3><p>E-commerce / social promo</p></div>
+    </div>
+
+    <div class="work-card" data-tag="Brand">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#f8f6f0,#eae6dc);border-bottom:1px solid #ddd">
+        <div class="art art-t" style="font-size:.7rem;color:#1a1a1a;letter-spacing:.14em">BRAND CAMPAIGN 2025</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:3px;background:#00c98d"></div>
+        <div class="art art-b" style="font-size:.62rem;color:#888;letter-spacing:.08em">STAND OUT · BE REMEMBERED</div>
+        <div class="card-type-tag" style="background:rgba(0,0,0,.08);color:#1a1a1a;border-color:rgba(0,0,0,.15)">Brand</div>
+        <div class="platform-badge" style="background:rgba(0,0,0,.1);color:#1a1a1a">Brand</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Brand Campaign Banner</h3><p>Corporate / agency style</p></div>
+    </div>
+
+    <div class="work-card" data-tag="Facebook">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#1a0030,#440080,#6600aa)">
+        <div class="art art-t" style="font-size:.95rem;color:#fff;letter-spacing:.04em">Creative Services</div>
+        <div style="position:absolute;top:58px;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:700;background:#00c98d;color:#0a0a0a;padding:3px 12px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif">Available for projects</div>
+        <div class="art art-b" style="font-size:.6rem;color:rgba(255,255,255,.45)">LOGOS · THUMBNAILS · SOCIAL MEDIA</div>
+        <div class="card-thumb-overlay"></div><div class="card-type-tag">Cover Photo</div>
+        <div class="platform-badge">Facebook</div>
+        <div class="upload-hint"><span>📁 Add your design</span></div>
+      </div>
+      <div class="card-info"><h3>Services Facebook Cover</h3><p>820×312 · Freelancer promo</p></div>
+    </div>
+
+  </div>
+</div>
+<footer><p>© 2026 <strong>Huzaifa DZN</strong> · <a href="huzaifa-dzn-portfolio.html" style="color:var(--accent);text-decoration:none">← Back to Portfolio</a></p></footer>
+</div>
+<script>
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('page').classList.add('visible'),120));
+const toggle=document.getElementById('themeToggle');const html=document.documentElement;const saved=localStorage.getItem('hdzn-theme')||'light';html.setAttribute('data-theme',saved);toggle.textContent=saved==='dark'?'☀️':'🌙';
+toggle.addEventListener('click',()=>{const next=html.getAttribute('data-theme')==='dark'?'light':'dark';html.setAttribute('data-theme',next);toggle.textContent=next==='dark'?'☀️':'🌙';localStorage.setItem('hdzn-theme',next);});
+document.querySelectorAll('.filter-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');const tag=btn.dataset.tag;document.querySelectorAll('.work-card').forEach(card=>{card.setAttribute('data-hidden',tag!=='All'&&card.dataset.tag!==tag?'true':'false');});});});
+</script>
+</body></html>
